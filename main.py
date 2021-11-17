@@ -69,8 +69,8 @@ soup = BeautifulSoup(src, "lxml")
 #     print(link_date_attr)
 
 
-find_a_by_text = soup.find("a", text="Одежда")
-print(find_a_by_text)
+# find_a_by_text = soup.find("a", text="Одежда")
+# print(find_a_by_text)
 #
 # find_a_by_text = soup.find("a", text="Одежда для взрослых")
 # print(find_a_by_text)
@@ -80,3 +80,19 @@ print(find_a_by_text)
 #
 # find_all_clothes = soup.find_all(text=re.compile("([Оо]дежда)"))
 # print(find_all_clothes)
+
+
+# url = "https://health-diet.ru/table_calorie/"
+# # url = "http://80.78.245.207:8000/"
+#
+# headers = {
+#     "Accept": "*/*",
+#     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 "
+#                   "Safari/537.36"
+# }
+# req = requests.get(url, headers=headers)
+# src = req.text
+# # print(src)
+#
+# with open("index.html", "w", encoding='utf-8') as file:
+#     file.write(src)
