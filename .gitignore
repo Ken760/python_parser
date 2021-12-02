@@ -113,7 +113,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-main.py
+#main.py
 index1.html
 data/videokartochki.json
 data
+lesson5/media
