@@ -26,17 +26,13 @@ def get_data_with_selenium(url):
     #     s = Service("C:/Users/Ken/PycharmProjects/python_parser/driver/chromedriver.exe")
     #     driver = webdriver.Chrome(service=s, options=options)
     #
-    #     driver.get("https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/?p=1")
-    #     sleep(2)
-    #     driver.get("https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/?p=2")
-    #     sleep(2)
-    #     driver.get("https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/?p=3")
-    #     sleep(2)
-    #     driver.get("https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/?p=4")
-    #     sleep(2)
+    #     for i in range(0, 4):
     #
-    #     with open("index_selenium.html", "w", encoding='utf-8') as file:
-    #         file.write(driver.page_source)
+    #         driver.get(f"https://www.dns-shop.ru/catalog/17a89aab16404e77/videokarty/?p={i}")
+    #         sleep(2)
+    #
+    #         with open(f"index_selenium_{i}.html", "w", encoding='utf-8') as file:
+    #             file.write(driver.page_source)
     #
     # except Exception as ex:
     #     print(ex)
@@ -44,21 +40,20 @@ def get_data_with_selenium(url):
     #     driver.close()
     #     driver.quit()
 
+for i in range(0, 4):
+    with open(f"index_selenium_{i}.html", encoding='utf-8') as file:
+        src = file.read()
 
-with open("index_selenium.html", encoding='utf-8') as file:
-    src = file.read()
+        # get video-cards-url
+        soup = BeautifulSoup(src, "lxml")
 
-    # get video-cards-url
-    soup = BeautifulSoup(src, "lxml")
+        cards = soup.find_all("a", class_="catalog-product__name")
 
-    cards = soup.find_all("a", class_="catalog-product__name")
-
-    for card in cards:
-        card = "https://www.dns-shop.ru" + card.get('href')
-        print(card)
+        for card in cards:
+            card = "https://www.dns-shop.ru" + card.get('href')
+            print(card)
 
 
-        
 def main():
     get_data_with_selenium("")
 
